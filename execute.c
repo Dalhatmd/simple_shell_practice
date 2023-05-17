@@ -6,14 +6,40 @@
  */
 void execute(char **argv)
 {
-	char *command = NULL, *actual_command = NULL;
+	int access_result, status;
+	pid_t pid;
+	char *command = NULL, *actual_command = NULL,*path;
 
-	if (argv)
+	path = getenv("PATH");
+
+	pid = fork();
+	if (pid == 0)
 	{
-		command = argv[0];
-		actual_command = get_location(command);
+		if (argv)
+		{
+			command = argv[0];
+			actual_command = get_location(command);
 
-		if (execve(actual_command, argv, NULL) == -1)
-			dprintf(STDERR_FILENO, "Error:");
+			access_result = access(actual_command, F_OK);
+			if (access_result == -1)
+			{
+				dprintf(STDERR_FILENO, "%s: 1: %s not found\n", path, command);
+				exit(EXIT_FAILURE);
+			}
+
+			if (execve(actual_command, argv, NULL) == -1)
+			{
+				perror("Error");
+				exit(EXIT_FAILURE);
+			}
+		}
+	}
+	else if (pid < 0)
+	{
+		perror("Error");
+	}
+	else
+	{
+		waitpid(pid, &status, 0);
 	}
 }
