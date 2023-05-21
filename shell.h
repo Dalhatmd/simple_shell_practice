@@ -12,10 +12,11 @@ extern int g_ac;
 #include <sys/wait.h>
 
 void input(char *input);
-void execute(char *command);
+void execute(char **argv);
 void cleanup(char **argv);
 void exit_shell(void);
-void print_prompt(void);
+void prompt(void);
+char *get_location(char *command);
 
 
 #endif /*SHELL_H*/

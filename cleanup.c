@@ -1,5 +1,5 @@
 #include "shell.h"
-void cleanup(void)
+void cleanup(char **argv)
 {
 	int i;
 	if (argv != NULL)

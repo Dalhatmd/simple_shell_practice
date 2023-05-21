@@ -51,7 +51,7 @@ void input(char *input)
 		}
 		argv[argc] = NULL;
 
-		execute(*argv);
+		execute(argv);
 
 		cleanup(argv);
 	}
