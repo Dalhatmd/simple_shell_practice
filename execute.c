@@ -9,7 +9,6 @@ void execute(char **argv)
 	int access_result, status;
 	pid_t pid;
 	char *command = NULL, *actual_command = NULL,*path;
-
 	path = getenv("PATH");
 
 	pid = fork();

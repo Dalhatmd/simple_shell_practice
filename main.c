@@ -1,4 +1,6 @@
 #include "shell.h"
+
+int g_ac;
 /**
  * main - execution starts here
  *
@@ -18,7 +20,7 @@ int main(int ac, char *av[])
 	char *token;
 	int i;
 
-	(void)ac;
+	g_ac = ac;
 
 	while (1)
 	{
