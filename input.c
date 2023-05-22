@@ -7,12 +7,6 @@ void input(char *input)
 	char *token;
 	int i;
 
-	if (strcmp(input, "exit") == 0 && g_ac == 2)
-	{
-		exit_shell();
-	}
-	else
-	{
 		argv_size = 2;
 		argc = 0;
 
@@ -55,5 +49,4 @@ void input(char *input)
 		execute(argv);
 
 		cleanup(argv);
-	}
 }

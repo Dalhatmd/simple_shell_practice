@@ -45,8 +45,11 @@ void execute(char **argv)
 
 void parse_input(char **argv)
 {
-    int argc = 0;
-    char *token = strtok(argv[0], " \t\n");
+    int argc;
+    char *token;
+
+    argc = 0;
+    token = strtok(argv[0], " \t\n");
     while (token != NULL) {
         argv[argc] = token;
         argc++;

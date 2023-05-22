@@ -18,7 +18,7 @@ int main(int ac, char *av[])
 
 		if (nchars_read == -1)
 		{
-			perror("Shell error");
+			printf("Exiting Shell... \n");
 			exit(-1);
 		}
 		lineptr[strcspn(lineptr, "\n")] = '\0';
