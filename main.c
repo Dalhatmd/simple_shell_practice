@@ -6,6 +6,7 @@ int main(int ac, char *av[])
 	size_t n;
 	ssize_t nchars_read;
 
+	(void)av;
 	g_ac = ac;
 
 	n = 0;

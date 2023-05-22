@@ -42,3 +42,16 @@ void execute(char **argv)
 		waitpid(pid, &status, 0);
 	}
 }
+
+void parse_input(char **argv)
+{
+    int argc = 0;
+    char *token = strtok(argv[0], " \t\n");
+    while (token != NULL) {
+        argv[argc] = token;
+        argc++;
+        token = strtok(NULL, " \t\n");
+    }
+    argv[argc] = NULL;
+}
+

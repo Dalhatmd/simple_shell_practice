@@ -17,6 +17,7 @@ void cleanup(char **argv);
 void exit_shell(void);
 void prompt(void);
 char *get_location(char *command);
+void parse_input(char **argv);
 
 
 #endif /*SHELL_H*/
