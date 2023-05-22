@@ -18,6 +18,8 @@ void exit_shell(void);
 void prompt(void);
 char *get_location(char *command);
 void parse_input(char **argv);
+void check_built(char **argv);
+void exec_builtin(char **argv);
 
 
 #endif /*SHELL_H*/

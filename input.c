@@ -46,6 +46,7 @@ void input(char *input)
 		argv[argc] = NULL;
 
 		parse_input(argv);
+		check_built(argv);
 		execute(argv);
 
 		cleanup(argv);
