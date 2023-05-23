@@ -1,4 +1,12 @@
 #include "shell.h"
+
+/**
+ * check_built - Function that checks whether a command is built in or not.
+ * @argv: Parameter (the command to be checked).
+ *
+ * Return: 1 if command is built-in, 0 if not.
+ */
+
 int check_built(char **argv)
 {
 	int i;
