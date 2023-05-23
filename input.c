@@ -34,10 +34,10 @@ void input(char *input)
 				char **new_argv = malloc(sizeof(char *) * new_size);
 				for (i = 0; i < argc; i++)
 				{
-					new_argv[i] = argv[i];
+					new_argv[i] = malloc(strlen(argv[i] + 1));
+				strcpy(new_argv[i], argv[i]);
 				}
 				free(argv);
-
 				argv = new_argv;
 				argv_size = new_size;
 			}
@@ -46,8 +46,12 @@ void input(char *input)
 		argv[argc] = NULL;
 
 		parse_input(argv);
-		check_built(argv);
+/*		if (check_built(argv) == 1)
+			exec_builtin(argv);
+		else
+		{*/
 		execute(argv);
+//		}
 
 		cleanup(argv);
 }

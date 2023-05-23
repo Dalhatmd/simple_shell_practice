@@ -11,6 +11,7 @@ void execute(char **argv)
 	char *command = NULL, *actual_command = NULL,*path;
 	path = getenv("PATH");
 
+
 	pid = fork();
 	if (pid == 0)
 	{
