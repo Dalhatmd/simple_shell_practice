@@ -1,5 +1,14 @@
 #include "shell.h"
 int g_ac;
+
+/**
+ * main - Entry Point.
+ * @ac: Parameter (the number of arguments aka argument count).
+ * @argv: Parameter (the array of command line arguments).
+ *
+ * Return: 0 for success.
+ */
+
 int main(int ac, char *av[])
 {
 	char *lineptr = NULL;
