@@ -45,6 +45,11 @@ void execute(char **argv)
 	}
 }
 
+/**
+ * parse_input - Function that tokenizes the command input into strings.
+ * @argv: Parameter (the command to split).
+ */
+
 void parse_input(char **argv)
 {
 	int argc;
