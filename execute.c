@@ -4,47 +4,37 @@
  *
  * @argv: command line args
  */
-void execute(char **argv)
+void execute(char *command_path, char *argument)
 {
-	int access_result, status;
+	char *args[3];
 	pid_t pid;
-	char *command = NULL, *actual_command = NULL, *path;
-
-	path = getenv("PATH");
-
+	int status;
 
 	pid = fork();
-	if (pid == 0)
+	if (pid == -1)
 	{
-		if (argv)
+		perror("fork");
+		exit(EXIT_FAILURE);
+	}
+	else if (pid == 0)
+	{
+		args[0] = command_path;
+		args[1] = argument;
+		args[2] = NULL;
+
+		if (execve(command_path, args, NULL) == -1)
 		{
-			command = argv[0];
-			actual_command = get_location(command);
-
-			access_result = access(actual_command, F_OK);
-			if (access_result == -1)
-			{
-				dprintf(STDERR_FILENO, "%s: 1: %s not found\n", path, command);
-				exit(EXIT_FAILURE);
-			}
-
-			if (execve(actual_command, argv, NULL) == -1)
-			{
-				perror("Error");
-				exit(EXIT_FAILURE);
-			}
-			free(actual_command);
+			perror("execve");
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			waitpid(pid, &status, 0);
 		}
 	}
-	else if (pid < 0)
-	{
-		perror("Error");
-	}
-	else
-	{
-		waitpid(pid, &status, 0);
-	}
 }
+
+
 
 /**
  * parse_input - Function that tokenizes the command input into strings.

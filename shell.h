@@ -13,7 +13,7 @@
 #include <dirent.h>
 
 void input(char *input);
-void execute(char **argv);
+void execute(char *command_path, char *argument);
 void cleanup(char **argv);
 void exit_shell(void);
 void prompt(void);
