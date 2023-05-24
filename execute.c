@@ -27,10 +27,10 @@ void execute(char *command_path, char *argument)
 			perror("execve");
 			exit(EXIT_FAILURE);
 		}
-		else
-		{
-			waitpid(pid, &status, 0);
-		}
+	}
+	else
+	{
+		waitpid(pid, &status, 0);
 	}
 }
 
