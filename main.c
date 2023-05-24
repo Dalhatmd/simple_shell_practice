@@ -1,5 +1,4 @@
 #include "shell.h"
-int g_ac;
 
 /**
  * main - Entry Point.
@@ -16,13 +15,16 @@ int main(int ac, char *av[])
 	ssize_t nchars_read;
 
 	(void)av;
-	g_ac = ac;
+	(void)ac;
 
 	n = 0;
 
 	while (1)
 	{
-		prompt();
+		if (isatty(STDIN_FILENO))
+		{
+			prompt();
+		}
 		nchars_read = getline(&lineptr, &n, stdin);
 
 		if (nchars_read == -1)
