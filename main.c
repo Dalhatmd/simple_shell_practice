@@ -34,7 +34,7 @@ int main(int ac, char *av[])
 		}
 		lineptr[strcspn(lineptr, "\n")] = '\0';
 
-		input(lineptr);
+		input();
 	}
 	free(lineptr);
 	return (0);

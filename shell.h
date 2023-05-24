@@ -12,7 +12,7 @@
 #include <sys/wait.h>
 #include <dirent.h>
 
-void input(char *input);
+void input(void);
 void execute(char *command_path, char *argument);
 void cleanup(char **argv);
 void exit_shell(void);

@@ -1,57 +1,45 @@
 #include "shell.h"
-void input(char *input)
+void input(void)
 {
-	char **argv = NULL;
-	int argv_size;
-	int argc;
-	char *token;
-	int i;
+	char *line = NULL, *command, *argument, *command_path;
+	size_t bufsize;
+	ssize_t nread;
 
-		argv_size = 2;
-		argc = 0;
+	bufsize = 0;
 
-		argv = malloc(sizeof(char *) * argv_size);
-		if (argv == NULL)
+	while (1)
+	{
+		prompt();
+		nread = getline(&line, &bufsize, stdin);
+		if (nread == -1)
 		{
-			perror("Shell: Memory allocation error");
-			exit (-1);
+			if (feof(stdin))
+			{
+				printf("Exiting shell...\n");
+				break;
+			}
+			else
+			{
+				perror("getline");
+				exit(EXIT_FAILURE);
+			}
 		}
-		token = strtok(input, "\n");
-		while (token != NULL)
+		line[strcspn(line, "\n")] = '\0';
+		command = strtok(line, " ");
+		argument = strtok(NULL, " ");
+
+		if (command != NULL)
 		{
-			argv[argc] = malloc(strlen(token) + 1);
-			if (argv[argc] == NULL)
+			command_path = get_location(command);
+			if (command_path != NULL)
 			{
-				perror("Shell: Memory allocation error");
-				exit(-1);
+				execute(command_path, argument);
+				free(command_path);
 			}
-			strcpy(argv[argc], token);
-			argc++;
-
-			if (argc >= argv_size)
+			else
 			{
-				int new_size = argv_size * 2;
-				char **new_argv = malloc(sizeof(char *) * new_size);
-				for (i = 0; i < argc; i++)
-				{
-					new_argv[i] = malloc(strlen(argv[i] + 1));
-				strcpy(new_argv[i], argv[i]);
-				}
-				free(argv);
-				argv = new_argv;
-				argv_size = new_size;
+				printf("Command not found: %s\n", command);
 			}
-			token = strtok(NULL, "\n");
 		}
-		argv[argc] = NULL;
-
-		parse_input(argv);
-/*		if (check_built(argv) == 1)
-			exec_builtin(argv);
-		else
-		{*/
-		execute(argv);
-		/*		} */
-
-		cleanup(argv);
+	}
 }
