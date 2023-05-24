@@ -14,13 +14,6 @@ char *get_location(char *command)
 	struct stat buffer;
 
 	path = getenv("PATH");
-	/*
-	if (check_built(command))
-	{
-	exec_builtin(command);
-	return;
-	}
-	*/
 	if (path)
 	{
 		path_copy = strdup(path);
