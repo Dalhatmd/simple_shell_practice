@@ -1,4 +1,12 @@
 #include "shell.h"
+
+/*
+ * get_location - Function that finds the absolute location of the executable file.
+ * @command: Parameter (the command to find its executable file).
+ *
+ * Return: Path of the executable.
+ */
+
 char *get_location(char *command)
 {
 	char *path, *path_copy, *path_token, *file_path;
