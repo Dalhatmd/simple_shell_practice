@@ -4,14 +4,15 @@ char *get_location(char *command)
 	char *path, *path_copy, *path_token, *file_path;
 	int com_len, dir_len;
 	struct stat buffer;
-	
+
 	path = getenv("PATH");
-/*	if (check_built(command))
+	/*
+	if (check_built(command))
 	{
 		exec_builtin(command);
 		return;
 	}
-*/
+	*/
 	if (path)
 	{
 		path_copy = strdup(path);
