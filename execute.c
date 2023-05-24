@@ -33,6 +33,7 @@ void execute(char **argv)
 				perror("Error");
 				exit(EXIT_FAILURE);
 			}
+			free(actual_command);
 		}
 	}
 	else if (pid < 0)
