@@ -9,7 +9,7 @@ void input(void)
 
 	while (1)
 	{
-		prompt();
+		printf("$ ");
 		nread = getline(&line, &bufsize, stdin);
 		if (nread == -1)
 		{
