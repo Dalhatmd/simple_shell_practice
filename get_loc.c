@@ -7,11 +7,11 @@ char *get_location(char *command)
 
 	path = getenv("PATH");
 	/*
-	if (check_built(command))
-	{
-		exec_builtin(command);
-		return;
-	}
+	*if (check_built(command))
+	*{
+	*exec_builtin(command);
+	*return;
+	*}
 	*/
 	if (path)
 	{
