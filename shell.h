@@ -21,6 +21,7 @@ char *get_location(const char *command);
 void parse_input(char **argv);
 int check_built(char **argv);
 void exec_builtin(char **argv);
+void handle_command(const char *command);
 
 
 #endif /*SHELL_H*/

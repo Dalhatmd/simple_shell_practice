@@ -30,6 +30,14 @@ void input(void)
 
 		if (command != NULL)
 		{
+			if (strcmp(command, "exit") == 0)
+			{
+				int exit_status;
+				exit_status = 0;
+				if (argument != NULL)
+					exit_status = atoi(argument);
+				exit(exit_status);
+			}
 			command_path = get_location(command);
 			if (command_path != NULL)
 			{
