@@ -21,7 +21,7 @@ char *get_location(char *command);
 void parse_input(char **argv);
 int check_built(char **argv);
 void exec_builtin(char **argv);
-void handle_command(const char *command);
+int handle(char *command);
 void print_env(void);
 
 
