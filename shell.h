@@ -13,11 +13,11 @@
 #include <dirent.h>
 
 void input(void);
-void execute(char *command_path, char *argument);
+void execmd(char **argv);
 void cleanup(char **argv);
 void exit_shell(void);
 void prompt(void);
-char *get_location(const char *command);
+char *get_location(char *command);
 void parse_input(char **argv);
 int check_built(char **argv);
 void exec_builtin(char **argv);
