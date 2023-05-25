@@ -37,6 +37,11 @@ char *get_location(char *command)
 		{
 			return (command);
 		}
+		else
+		{
+			printf("Command: %s not found \n", command);
+			return (NULL);
+		}
 		return (NULL);
 
 	}

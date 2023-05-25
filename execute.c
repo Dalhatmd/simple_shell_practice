@@ -1,6 +1,6 @@
 #include "shell.h"
-
-void execmd(char **argv){
+void execmd(char **argv)
+{
 	char *command = NULL, *actual_command = NULL;
 	pid_t pid;
 	int status;
@@ -29,5 +29,4 @@ void execmd(char **argv){
 	{
 		waitpid(pid, &status, 0);
 	}
-
 }

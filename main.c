@@ -43,7 +43,7 @@ int main(int ac, char **argv)
 		argv[i] = malloc(sizeof(char) * strlen(token));
 		strcpy(argv[i], token);
 		token = strtok(NULL, delim);
-        }
+	}
         argv[i] = NULL;
 	execmd(argv);
     }
