@@ -19,13 +19,10 @@ void execmd(char **argv)
         {
             command = argv[0];
 
-            // Attempt to execute the command directly
             if (execve(command, argv, NULL) == -1)
             {
-                // Execution failed, check if it starts with "/bin/"
                 if (strncmp(command, "/bin/", 5) == 0)
                 {
-                    // Remove the "/bin/" prefix and attempt execution
                     if (execve(command + 5, argv, NULL) == -1)
                     {
                         perror("execve");
@@ -34,7 +31,6 @@ void execmd(char **argv)
                 }
                 else
                 {
-                    // Try to find the command using get_location()
                     actual_command = get_location(command);
                     if (actual_command != NULL)
                     {
