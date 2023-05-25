@@ -38,6 +38,8 @@ void input(void)
 					exit_status = atoi(argument);
 				exit(exit_status);
 			}
+			else if (strcmp(command, "env") == 0)
+				print_env();
 			command_path = get_location(command);
 			if (command_path != NULL)
 			{
